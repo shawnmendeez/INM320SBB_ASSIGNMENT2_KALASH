@@ -7,7 +7,6 @@ $transform: uppercase;
 $text-bold: 400;
 
 // TWO MIXINS (DONE)
-
 @mixin body-copy {
     margin-top: 25px;
     margin-bottom: 20px;
@@ -111,14 +110,16 @@ article {
 
 .post-title {
     margin-top: 0;
-}
-.post-title a {
-    @include post-header;
-}
-.post-title a:hover {
-    color: #35c4ce;
+
+//NESTING(#1)
+    a {
+        @include post-header;
+    }
 }
 
+// .post-title a:hover {
+//     color: #35c4ce;
+// }
 
 
 /* footer */
@@ -127,12 +128,10 @@ footer {
     text-align: $center-text;
     background: #eaf2ff;
     color: #989898;
-//NESTING (#ONE)
-    a {
-        color: #989898;
-    }
 }
-
+#footer a {
+    color: #989898;
+}
 #footer a:hover {
     color: #111111;
 }
@@ -145,17 +144,28 @@ footer {
 .footer-social-links {
     padding: 20px 0;
     line-height: 2em;
-//NESTING (#TWO) (DONE)
+
+//NESTING(#2)
     a {
         margin: 0 10px;
         font-size: 16px;
         letter-spacing: 1px;
         text-transform: $transform;
     }
+//NESTING(#3)
+    span {
+        display: none;
+    }
 }
-.footer-social-links a span {
-    display: none;
-}
+// .footer-social-links a {
+//     margin: 0 10px;
+//     font-size: 16px;
+//     letter-spacing: 1px;
+//     text-transform: $transform;
+// }
+// .footer-social-links a span {
+//     display: none;
+// }
 #footer-copyright {
     padding: 20px 0;
     font-size: 12px;
@@ -175,23 +185,42 @@ footer {
         justify-content: center;
         align-items: center;
         height: 60px;
+    //NESTING(#4)
+        ul {
+            display: flex;
+        }
+    //NESTING(#5) (DONE)
+        li {
+            margin: 0 15px;
+            position: relative;
+            line-height: 24px;
+        }
+    //NESTING(#6)
+        a {
+            font-family: $main-font;
+            color: #324360;
+            letter-spacing: 1px;
+            text-transform: $transform;
+            font-size: 12px;
+            font-weight: 900;
+        }
     }
-    header nav ul {
-        display: flex;
-    }
-    header nav li {
-        margin: 0 15px;
-        position: relative;
-        line-height: 24px;
-    }
-    header nav a {
-        font-family: $main-font;
-        color: #324360;
-        letter-spacing: 1px;
-        text-transform: $transform;
-        font-size: 12px;
-        font-weight: 900;
-    }
+    // header nav ul {
+    //     display: flex;
+    // }
+    // header nav li {
+    //     margin: 0 15px;
+    //     position: relative;
+    //     line-height: 24px;
+    // }
+    // header nav a {
+    //     font-family: $main-font;
+    //     color: #324360;
+    //     letter-spacing: 1px;
+    //     text-transform: $transform;
+    //     font-size: 12px;
+    //     font-weight: 900;
+    // }
     header nav a:hover {
         color: #35c4ce;
     }
